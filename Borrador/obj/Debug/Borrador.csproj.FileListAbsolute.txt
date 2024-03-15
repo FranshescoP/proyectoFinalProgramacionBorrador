@@ -1,0 +1,10 @@
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\bin\Debug\Borrador.exe.config
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\bin\Debug\Borrador.exe
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\bin\Debug\Borrador.pdb
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.csproj.AssemblyReference.cache
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.Form1.resources
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.frmlogin.resources
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.csproj.GenerateResource.cache
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.csproj.CoreCompileInputs.cache
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.exe
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.pdb
