@@ -11,6 +11,7 @@ namespace Borrador
         static void Main(string[] args)
         {
             Console.WriteLine("Inicio");
+            Console.WriteLine("Inicio");
         }
     }
 }
