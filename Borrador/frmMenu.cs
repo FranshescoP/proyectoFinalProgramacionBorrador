@@ -16,5 +16,10 @@ namespace Borrador
         {
             InitializeComponent();
         }
+
+        private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

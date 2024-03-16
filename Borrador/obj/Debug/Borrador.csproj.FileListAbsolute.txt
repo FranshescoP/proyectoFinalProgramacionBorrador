@@ -8,3 +8,4 @@ C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borra
 C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.csproj.CoreCompileInputs.cache
 C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.exe
 C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.pdb
+C:\Users\Franshesco Pascual\source\repos\proyectoFinalProgramacionBorrador\Borrador\obj\Debug\Borrador.frmMenu.resources
