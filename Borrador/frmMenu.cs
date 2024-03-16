@@ -21,5 +21,12 @@ namespace Borrador
         {
             Application.Exit();
         }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmlogin login = new frmlogin();
+            this.Hide();
+            login.ShowDialog();
+        }
     }
 }
