@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,13 +10,11 @@ using System.Windows.Forms;
 
 namespace Borrador
 {
-    internal class Program
+    public partial class Form1 : Form
     {
-        static void Main(string[] args)
+        public Form1()
         {
-            frmlogin login = new frmlogin();
-
-            login.ShowDialog();
+            InitializeComponent();
         }
     }
 }
