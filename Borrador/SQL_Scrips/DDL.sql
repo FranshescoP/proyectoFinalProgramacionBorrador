@@ -1,0 +1,107 @@
+CREATE DATABASE ProyectoPrueba;
+USE ProyectoPrueba;
+
+CREATE TABLE TIPODOCUMENTO(
+	idDoc INT IDENTITY PRIMARY KEY,
+	tipoDoc VARCHAR(128)
+);
+CREATE TABLE CATEGORIAPRODUCTO(
+	idCategoria INT IDENTITY PRIMARY KEY,
+	descripcion VARCHAR(128)
+);
+CREATE TABLE SERVICIOS(
+	idServicio INT IDENTITY PRIMARY KEY,
+	nombre VARCHAR(128),
+	precio DECIMAL
+);
+CREATE TABLE PERMISOS(
+	idPermiso INT IDENTITY PRIMARY KEY,
+	descripcion VARCHAR(128)
+);
+CREATE TABLE ESTADO(
+	idEstado INT IDENTITY PRIMARY KEY,
+	descripcion VARCHAR(128)
+);
+CREATE TABLE TIPOPAGO(
+	idTipoPago INT IDENTITY PRIMARY KEY,
+	tipo VARCHAR(128)
+);
+CREATE TABLE PUESTOS(
+	idPuesto INT IDENTITY PRIMARY KEY,
+	nombre VARCHAR(128),
+	permiso INT,
+	CONSTRAINT fk_permisoP FOREIGN KEY (permiso) REFERENCES PERMISOS (idPermiso)
+);
+CREATE TABLE HUESPUED(
+	noDocumento FLOAT PRIMARY KEY NOT NULL,
+	nombre VARCHAR(30),
+	apellido VARCHAR(30),
+	direccion VARCHAR(100),
+	telefono FLOAT,
+	tipodc INT,
+	permiso INT,
+	CONSTRAINT fk_permisoH FOREIGN KEY (permiso) REFERENCES PERMISOS (idPermiso),
+	CONSTRAINT fk_Tipodoc FOREIGN KEY (tipodc) REFERENCES TIPODOCUMENTO(idDoc)
+);
+
+CREATE TABLE PERSONAL(
+	idEmpleado FLOAT PRIMARY KEY NOT NULL,
+	nombre VARCHAR(30),
+	apellido VARCHAR(30),
+	telefono FLOAT,
+	puesto INT,
+	CONSTRAINT fk_púesto_P FOREIGN KEY (puesto) REFERENCES PUESTOS (idPuesto)
+);
+CREATE TABLE HABITACIONES(
+	noHabitacion INT IDENTITY PRIMARY KEY,
+	baños INT,
+	camas INT,
+	nivel INT,
+);
+CREATE TABLE PRODUCTOS(
+	idProducto INT IDENTITY PRIMARY KEY,
+	nombre VARCHAR(30),
+	categoria INT,
+	precio DECIMAL,
+	CONSTRAINT fk_categoria FOREIGN KEY (categoria) REFERENCES CATEGORIAPRODUCTO (idCategoria)
+);
+CREATE TABLE CARRITO(
+	idCarrito INT IDENTITY PRIMARY KEY,
+	IDPero FLOAT,
+	productos INT,
+	servicios INT,
+	total DECIMAL,
+	CONSTRAINT fk_personah FOREIGN KEY (IDPero) REFERENCES HUESPUED (noDocumento),
+	CONSTRAINT fk_producto FOREIGN KEY (productos) REFERENCES PRODUCTOS (idProducto),
+	CONSTRAINT fk_servicio FOREIGN KEY (servicios) REFERENCES SERVICIOS (idServicio)
+);
+CREATE TABLE PAGO(
+	idPago INT IDENTITY PRIMARY KEY,
+	tipoPago INT,
+	total FLOAT,
+	CONSTRAINT fk_tipopago FOREIGN KEY (tipoPago) REFERENCES TIPOPAGO (idTipoPago)
+);
+CREATE TABLE RESERVACION(
+	idReservacion INT IDENTITY PRIMARY KEY,
+	idHuesped FLOAT,
+	habitaciones INT,
+	IDempleado FLOAT,
+	estado INT,
+	pagoT INT
+	CONSTRAINT fk_empleadoRe FOREIGN KEY (IDempleado) REFERENCES PERSONAL(idEmpleado),
+	CONSTRAINT fk_perso FOREIGN KEY (idHuesped) REFERENCES HUESPUED (noDocumento),
+	CONSTRAINT fk_habi FOREIGN KEY (habitaciones) REFERENCES HABITACIONES (noHabitacion),
+	CONSTRAINT fk_estado FOREIGN KEY (estado) REFERENCES ESTADO (idEstado),
+	CONSTRAINT fk_pago FOREIGN KEY (pagoT) REFERENCES PAGO (idPago)
+);
+
+
+/*Sector de login*/
+
+CREATE TABLE USUARIOS (
+	usuarioH FLOAT,
+	contraseña VARCHAR(128),
+	CONSTRAINT fk_hues FOREIGN KEY (usuarioH) REFERENCES HUESPUED (noDocumento)
+);
+
+DROP TABLE USUARIOS

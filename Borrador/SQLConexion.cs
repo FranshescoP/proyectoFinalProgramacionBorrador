@@ -11,7 +11,7 @@ namespace Borrador
 {
      class SQLConexion
     {
-        private SqlConnection cnn = new SqlConnection("Data Source=DESKTOP-MVOUCJI;Initial Catalog=ProyectoPrueba;Integrated Security=True");
+        public SqlConnection cnn = new SqlConnection("Data Source=DESKTOP-MVOUCJI;Initial Catalog=ProyectoPrueba;Integrated Security=True");
 
         public int Login(string usuario, string contraseña)
         {
