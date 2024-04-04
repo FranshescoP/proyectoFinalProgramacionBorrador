@@ -95,11 +95,10 @@ CREATE TABLE RESERVACION(
 	CONSTRAINT fk_pago FOREIGN KEY (pagoT) REFERENCES PAGO (idPago)
 );
 
-
 /*Sector de login*/
 
 CREATE TABLE USUARIOS (
-	usuarioH FLOAT,
+	usuarioH FLOAT UNIQUE,
 	contraseña VARCHAR(128),
 	CONSTRAINT fk_hues FOREIGN KEY (usuarioH) REFERENCES HUESPUED (noDocumento)
 );
