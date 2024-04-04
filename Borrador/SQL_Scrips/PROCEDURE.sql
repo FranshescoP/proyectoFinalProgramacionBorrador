@@ -16,26 +16,28 @@ BEGIN
 END
 GO
 -- =============================================
-CREATE PROCEDURE registrarHuesped
+CREATE PROCEDURE sp_registrarHuesped
 	@noDocumento FLOAT,
 	@nombre VARCHAR(128),
 	@apellido VARCHAR(128),
 	@direccion VARCHAR(128),
 	@telefono FLOAT,
 	@tipodc INT,
-	@pass VARCHAR(128),
-	@permiso INT
+	@pass VARCHAR(128)
 AS
 BEGIN
+
 	INSERT INTO HUESPUED (noDocumento, nombre, apellido, direccion, telefono, tipodc, permiso)
 		VALUES(@noDocumento, @nombre, @apellido, @direccion, @telefono, @tipodc, 3);
 
-	INSERT INTO USUARIOS (usuarioH, contraseña)
-		SELECT H.noDocumento FROM USUARIOS AS U
-			 JOIN HUESPUED AS H ON U.usuarioH = H.ID
-				WHERE U.usuarioH = H.ID
+
+		INSERT INTO USUARIOS (usuarioH, contraseña)
+			VALUES(@noDocumento, @pass)
+
 END
 GO
 
-DROP PROCEDURE registrarHuesped
+EXECUTE sp_registrarHuesped 3606940710103, 'Franshesco', 'Pascual', 'Zona 5', 30964851,2, 'camino2024'
 
+
+DROP PROCEDURE sp_registrarHuesped
