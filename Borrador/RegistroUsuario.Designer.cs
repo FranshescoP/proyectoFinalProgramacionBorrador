@@ -85,9 +85,9 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label7.Location = new System.Drawing.Point(77, 339);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 16);
+            this.label7.Size = new System.Drawing.Size(76, 16);
             this.label7.TabIndex = 22;
-            this.label7.Text = "Constraseña";
+            this.label7.Text = "Contraseña";
             // 
             // registro
             // 

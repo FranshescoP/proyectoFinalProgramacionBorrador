@@ -23,37 +23,53 @@ namespace Borrador
             InitializeComponent();
         }
 
-        private void registro_Click(object sender, EventArgs e)
+        private void regis()
         {
+
             try
             {
+                person.Nombre = txtNombre.Text;
+                person.Apellido = txtApellido.Text;
+                person.Direccion = txtDireccion.Text;
+                person.Pass = txtpass.Text;
+                person.Tipodc = Convert.ToInt32(cboDocumentos.SelectedValue);
                 person.Telefono = (float)Convert.ToInt32(txtTelefono.Text);
                 person.NoDocumento = (float)Convert.ToInt64(txtDocumento.Text);
-            } 
+
+
+                if (string.IsNullOrEmpty(txtNombre.Text))
+                {
+                    Console.WriteLine("Esta vacio");
+                }
+                else
+                {
+
+                    try 
+                    {
+                        consul.AgregarHuespued(person);
+
+                        MessageBox.Show("Se creo correctamnete el usuario");
+
+                        frmlogin vistal = new frmlogin();
+                        this.Hide();
+                        vistal.ShowDialog();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("error");
+                    }
+                }
+
+            }
             catch (Exception i)
             {
-                MessageBox.Show(i.Message, "Debe de llenar los campos de telefono y numero de documento");
-            }
-
-            person.Nombre = txtNombre.Text;
-            person.Apellido = txtApellido.Text;
-            person.Direccion = txtDireccion.Text;
-            person.Pass = txtpass.Text;
-            person.Tipodc = Convert.ToInt32(cboDocumentos.SelectedValue);
-
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) || string.IsNullOrEmpty(txtDireccion.Text) ||
-                string.IsNullOrEmpty(txtpass.Text))
-            {
                 MessageBox.Show("Debe de llenar todos los campos");
-            } else
-            {
-                consul.AgregarHuespued();
-                MessageBox.Show("Se creo correctamnete el usuario");
-                frmlogin vistal = new frmlogin();
-                this.Hide();
-                vistal.ShowDialog();
             }
+        }
 
+        private void registro_Click(object sender, EventArgs e)
+        {
+            regis();
         }
 
         private void RegistroUsuario_Load(object sender, EventArgs e)

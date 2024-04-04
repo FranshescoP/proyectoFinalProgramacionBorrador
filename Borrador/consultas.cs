@@ -10,36 +10,45 @@ namespace Borrador
 {
     public class consultas
     {
-        SQLConexion doc = new SQLConexion();
+        public SqlConnection cnn = new SqlConnection("Data Source=DESKTOP-MVOUCJI;Initial Catalog=ProyectoPrueba;Integrated Security=True");
         persona person = new persona();
 
         public DataTable cargarComboDoc()
         {
-            SqlDataAdapter da = new SqlDataAdapter("obtenerTipoDocumentos", doc.cnn);
+            SqlDataAdapter da = new SqlDataAdapter("obtenerTipoDocumentos", cnn);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
         }
 
-        public int AgregarHuespued()
+        public int AgregarHuespued(persona person)
         {
-            doc.cnn.Open();
-            SqlCommand agr = new SqlCommand("registrarHuesped", doc.cnn);
+            cnn.Open();
 
-            agr.Parameters.AddWithValue("@nombre", person.Nombre ?? "");
-            agr.Parameters.AddWithValue("@apellido", person.Apellido ?? "");
-            agr.Parameters.AddWithValue("@direccion", person.Direccion ?? "");
-            agr.Parameters.AddWithValue("@telefono", person.Telefono);
+            SqlCommand agr = new SqlCommand("sp_registrarHuesped", cnn);
+            agr.CommandType = CommandType.StoredProcedure;
+
             agr.Parameters.AddWithValue("@noDocumento", person.NoDocumento);
+            agr.Parameters.AddWithValue("@nombre", person.Nombre);
+            agr.Parameters.AddWithValue("@apellido", person.Apellido);
+            agr.Parameters.AddWithValue("@direccion", person.Direccion);
+            agr.Parameters.AddWithValue("@telefono", person.Telefono);
             agr.Parameters.AddWithValue("@tipodc", person.Tipodc);
-            agr.Parameters.AddWithValue("@pass", person.Pass ?? "");
+            agr.Parameters.AddWithValue("@pass", person.Pass);
 
-            int filasAfectadas = agr.ExecuteNonQuery();
-            doc.cnn.Close();
+            try
+            {
+                agr.ExecuteNonQuery();
 
-            return filasAfectadas;
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            cnn.Close();
+
+            return -1;
         }
-
     }
 }
